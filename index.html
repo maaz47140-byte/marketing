@@ -1,836 +1,900 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ABC Growth Agency - Business Communication Solutions</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #333;
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
-    
-    /* Navigation */
-    nav {
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      position: relative;
-      padding: 5px 0;
-    }
-    
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #667eea;
-      transition: width 0.3s ease;
-    }
-    
-    nav a:hover::after {
-      width: 100%;
-    }
-    
-    nav a:hover {
-      color: #667eea;
-    }
-    
-    /* Hero Section */
-    header {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: #fff;
-      padding: 120px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".1" fill="%23ffffff"/></svg>') no-repeat bottom;
-      background-size: cover;
-      opacity: 0.1;
-    }
-    
-    header h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      animation: fadeInDown 1s ease;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-    
-    header p {
-      max-width: 800px;
-      margin: auto;
-      font-size: 1.3rem;
-      opacity: 0.95;
-      animation: fadeInUp 1s ease 0.2s backwards;
-      line-height: 1.8;
-    }
-    
-    .cta-button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 40px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-      animation: fadeInUp 1s ease 0.4s backwards;
-    }
-    
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
-    }
-    
-    /* Sections */
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: auto;
-      background: #fff;
-      position: relative;
-    }
-    
-    section:nth-child(even) {
-      background: #f8f9fb;
-    }
-    
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      color: #0f172a;
-      text-align: center;
-      position: relative;
-      padding-bottom: 15px;
-    }
-    
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: 2px;
-    }
-    
-    /* About Section */
-    .about-content {
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-      font-size: 1.1rem;
-      color: #555;
-    }
-    
-    .about-content p {
-      margin-bottom: 20px;
-    }
-    
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
-    
-    .stat-card {
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    
-    .stat-card:hover {
-      transform: translateY(-10px);
-    }
-    
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .stat-label {
-      font-size: 1rem;
-      color: #666;
-      margin-top: 10px;
-    }
-    
-    /* Services */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    
-    .service-card {
-      background: #fff;
-      padding: 40px 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-      border-top: 5px solid #667eea;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .service-card:hover::before {
-      opacity: 0.05;
-    }
-    
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-    }
-    
-    .service-icon {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      display: block;
-    }
-    
-    .service-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 15px;
-      color: #0f172a;
-    }
-    
-    .service-card p {
-      color: #666;
-      line-height: 1.7;
-    }
-    
-    /* How It Works */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-top: 50px;
-    }
-    
-    .step {
-      text-align: center;
-      position: relative;
-    }
-    
-    .step-number {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      font-weight: 700;
-      margin: 0 auto 20px;
-      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-    }
-    
-    .step h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      color: #0f172a;
-    }
-    
-    .step p {
-      color: #666;
-    }
-    
-    /* Contact */
-    .contact-box {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-      padding: 50px;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
-      max-width: 700px;
-      margin: auto;
-    }
-    
-    .contact-box h3 {
-      font-size: 1.8rem;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-    
-    .contact-info {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      padding: 25px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-    
-    .contact-info p {
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-    }
-    
-    .contact-info strong {
-      display: inline-block;
-      width: 100px;
-    }
-    
-    .contact-box a {
-      color: #fff;
-      text-decoration: underline;
-      transition: opacity 0.3s ease;
-    }
-    
-    .contact-box a:hover {
-      opacity: 0.8;
-    }
-    
-    .disclaimer {
-      background: rgba(255,255,255,0.15);
-      padding: 20px;
-      border-radius: 10px;
-      border-left: 4px solid #fff;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    
-    /* Privacy Section */
-    .privacy-content {
-      max-width: 900px;
-      margin: auto;
-    }
-    
-    .privacy-card {
-      background: #fff;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      margin-bottom: 30px;
-      border-left: 5px solid #667eea;
-    }
-    
-    .privacy-card h3 {
-      font-size: 1.6rem;
-      color: #0f172a;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .privacy-card .icon {
-      font-size: 1.8rem;
-    }
-    
-    .privacy-card p {
-      color: #555;
-      line-height: 1.8;
-      margin-bottom: 15px;
-    }
-    
-    .privacy-card ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    
-    .privacy-card ul li {
-      padding: 12px 0;
-      padding-left: 30px;
-      position: relative;
-      color: #555;
-      line-height: 1.7;
-    }
-    
-    .privacy-card ul li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: #667eea;
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-    
-    .privacy-highlight {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-    }
-    
-    .privacy-highlight h3 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-    }
-    
-    .privacy-highlight p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-    }
-    
-    /* Footer */
-    footer {
-      background: #0f172a;
-      color: #fff;
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.95rem;
-    }
-    
-    footer p {
-      opacity: 0.8;
-    }
-    
-    /* Animations */
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.5rem;
-      }
-      
-      header p {
-        font-size: 1.1rem;
-      }
-      
-      h2 {
-        font-size: 2rem;
-      }
-      
-      nav ul {
-        gap: 20px;
-      }
-      
-      .contact-box {
-        padding: 30px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automate Outreach | Systems for Service Businesses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --error: #ef4444;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .lead {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+
+        .btn:disabled {
+            background-color: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-bottom: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            background: linear-gradient(90deg, #2563eb, #1e40af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .lead {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Problem Section */
+        .problem-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .problem-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            border-left: 4px solid #ef4444;
+        }
+
+        .problem-item i {
+            font-size: 2rem;
+            color: #ef4444;
+            margin-bottom: 20px;
+        }
+
+        /* Shift Section */
+        .shift {
+            background-color: #f1f5f9;
+        }
+
+        .shift-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .principle {
+            padding: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .principle i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        /* Target Section */
+        .target-businesses {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .business-type {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+        }
+
+        .business-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .business-icon i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .honest-line {
+            text-align: center;
+            font-style: italic;
+            font-size: 1.3rem;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: rgba(37, 99, 235, 0.05);
+            border-radius: 12px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background-color: #f1f5f9;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Privacy Section */
+        .privacy-section {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .privacy-section h3 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .privacy-section p {
+            color: #cbd5e1;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-line {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: var(--gray);
+        }
+
+        .contact-email {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-email:hover {
+            text-decoration: underline;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--gray-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        .form-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid var(--success);
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            border: 1px solid var(--error);
+            display: block;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                min-height: 80vh;
+            }
+            
+            .problem-items,
+            .services-grid,
+            .principles {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#how-it-works">How It Works</a></li>
-      <li><a href="#privacy">Privacy</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">Stop Losing Leads To Silence.</h1>
+                <p class="lead fade-in">Automated follow-ups, outreach, and reminders for service businesses that want every lead handled.</p>
+                <a href="#demo" class="btn fade-in">See How It Works</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- Hero Section -->
-  <header id="home">
-    <h1>ABC Growth Agency</h1>
-    <p>
-      We help businesses maintain meaningful communication with their prospects
-      and customers through ethical follow-ups, reminders, and engagement systems.
-      Build lasting relationships that drive growth.
-    </p>
-    <a href="#contact" class="cta-button">Get Started Today</a>
-  </header>
+    <!-- The Problem -->
+    <section class="problem">
+        <div class="container">
+            <h2>The Problem</h2>
+            <div class="problem-items">
+                <div class="problem-item fade-in">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>Missed Follow-ups</h3>
+                    <p>Leads slip through cracks when manual systems fail.</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <h3>Manual Messages</h3>
+                    <p>Hours wasted on repetitive emails and texts that could be automated.</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <i class="fas fa-snowflake"></i>
+                    <h3>Leads Go Cold</h3>
+                    <p>Potential clients forget you when communication isn't consistent.</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>No Tracking System</h3>
+                    <p>You can't improve what you don't measure. Replies get lost in noise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Us</h2>
-    <div class="about-content">
-      <p>
-        At ABC Growth Agency, we understand that consistent, thoughtful communication 
-        is the foundation of business success. Our mission is to help service-based 
-        businesses stay connected with their clients through automated yet personalized 
-        engagement strategies.
-      </p>
-      <p>
-        We believe in ethical communication practices, ensuring every interaction 
-        respects your customers' preferences and builds trust. Our systems are designed 
-        to enhance human connection, not replace it.
-      </p>
+    <!-- The Shift -->
+    <section class="shift">
+        <div class="container">
+            <div class="shift-content">
+                <h2>The Shift</h2>
+                <p class="lead">Logic, not luck.</p>
+                
+                <div class="principles">
+                    <div class="principle fade-in">
+                        <i class="fas fa-brain"></i>
+                        <h3>Automation doesn't replace people.</h3>
+                        <p>It replaces forgetting. Systems remember when humans can't.</p>
+                    </div>
+                    <div class="principle fade-in">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                        <h3>Systems scale. Effort doesn't.</h3>
+                        <p>Manual effort hits ceilings. Automated systems grow with you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Deliver -->
+    <section class="services">
+        <div class="container">
+            <h2>What We Deliver</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Business Automation Systems</h3>
+                    <p>Custom workflows that run follow-ups, reminders, and outreach automatically.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Reputation & Review Growth</h3>
+                    <p>Ethical rating and review enhancement to improve online trust.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lead Supply & Re-Activation</h3>
+                    <p>New leads plus re-engaging dead leads already in your database.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Done-For-You Automation</h3>
+                    <p>Email, SMS, and CRM-based segmentation and follow-ups. Set up and managed for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who This Is For -->
+    <section class="target">
+        <div class="container">
+            <h2>Who This Is For</h2>
+            <div class="target-businesses">
+                <div class="business-type fade-in">
+                    <div class="business-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h4>Plumbers</h4>
+                </div>
+                <div class="business-type fade-in">
+                    <div class="business-icon">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h4>Dentists</h4>
+                </div>
+                <div class="business-type fade-in">
+                    <div class="business-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h4>Car Showrooms</h4>
+                </div>
+                <div class="business-type fade-in">
+                    <div class="business-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4>Service Businesses</h4>
+                </div>
+            </div>
+            
+            <div class="honest-line fade-in">
+                <p>"If you want fewer tools and more control, this is for you."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soft CTA -->
+    <section class="cta-section" id="demo">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="fade-in">Not sure if automation fits your business?</h2>
+                <p class="lead fade-in">We'll map one workflow for your business. No pressure.</p>
+                <button class="btn btn-secondary fade-in" id="requestDemoBtn">Request a Demo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Policy -->
+    <section class="privacy-section">
+        <div class="container">
+            <h3>Privacy Policy</h3>
+            <p>We collect only the information you provide: name, email, and phone number.</p>
+            <p>This data is used solely to communicate with you and deliver our services.</p>
+            <p>It is never sold, shared, or used for any other purpose.</p>
+            <p>We handle your data with care and respect, in line with privacy best practices.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-line">Built for businesses that value systems over noise.</p>
+            <p>© Automation Outreach Systems • <a href="mailto:contact@automateoutreach.com" class="contact-email">contact@automateoutreach.com</a></p>
+        </div>
+    </footer>
+
+    <!-- Demo Form Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Request a Workflow Demo</h3>
+            <p>We'll map one automation workflow for your business.</p>
+            
+            <div id="formMessage" class="form-message"></div>
+            
+            <!-- FormSubmit.co Form - Replace with your actual FormSubmit endpoint -->
+            <form id="demoForm" action="https://formsubmit.co/maaz47140@gmail.com" method="POST">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="New Workflow Demo Request - Automation Outreach">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="#thankyou">
+                <input type="hidden" name="_autoresponse" value="Thank you for requesting a workflow demo. We'll review your information and contact you within 24 hours to schedule your personalized automation walkthrough.">
+                
+                <div class="form-group">
+                    <label class="form-label">Your Name *</label>
+                    <input type="text" name="name" class="form-control" required placeholder="John Smith">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Business Email *</label>
+                    <input type="email" name="email" class="form-control" required placeholder="john@yourbusiness.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" name="phone" class="form-control" placeholder="+1 (555) 123-4567">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Business Type *</label>
+                    <select name="business_type" class="form-control" required>
+                        <option value="" disabled selected>Select your business type</option>
+                        <option value="Plumbing Service">Plumbing Service</option>
+                        <option value="Dental Practice">Dental Practice</option>
+                        <option value="Car Dealership/Showroom">Car Dealership/Showroom</option>
+                        <option value="Other Service Business">Other Service Business</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Current Biggest Challenge</label>
+                    <textarea name="challenge" class="form-control" rows="3" placeholder="What's your biggest challenge with follow-ups or lead management?"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Monthly Lead Volume</label>
+                    <select name="lead_volume" class="form-control">
+                        <option value="" selected>Select approximate monthly leads</option>
+                        <option value="Less than 10">Less than 10</option>
+                        <option value="10-50">10-50</option>
+                        <option value="50-100">50-100</option>
+                        <option value="100+">100+</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn" id="submitBtn" style="width: 100%;">
+                    <span id="submitText">Submit Request</span>
+                    <span id="submitSpinner" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i> Sending...
+                    </span>
+                </button>
+            </form>
+        </div>
     </div>
-    
-    <div class="stats">
-      <div class="stat-card">
-        <div class="stat-number">500+</div>
-        <div class="stat-label">Happy Clients</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">98%</div>
-        <div class="stat-label">Client Retention</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">2M+</div>
-        <div class="stat-label">Messages Delivered</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">24/7</div>
-        <div class="stat-label">Support Available</div>
-      </div>
+
+    <!-- Thank You Modal -->
+    <div id="thankyouModal" class="modal">
+        <div class="modal-content">
+            <span class="close-thankyou">&times;</span>
+            <div style="text-align: center; padding: 20px;">
+                <div style="width: 80px; height: 80px; background-color: rgba(16, 185, 129, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px;">
+                    <i class="fas fa-check" style="font-size: 2.5rem; color: var(--success);"></i>
+                </div>
+                <h3>Request Received</h3>
+                <p>Thank you for your interest. We've received your demo request and will contact you within 24 hours.</p>
+                <p>An automated confirmation has been sent to your email.</p>
+                <button class="btn" id="closeThankyouBtn" style="margin-top: 20px;">Close</button>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <!-- Services Section -->
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <span class="service-icon">📧</span>
-        <h3>Customer Follow-Ups</h3>
-        <p>
-          Automated yet personalized follow-up sequences that nurture relationships 
-          and keep your business top of mind without being intrusive.
-        </p>
-      </div>
-      
-      <div class="service-card">
-        <span class="service-icon">📅</span>
-        <h3>Appointment Reminders</h3>
-        <p>
-          Reduce no-shows with timely appointment confirmations and reminders via 
-          email and SMS, customized to your brand voice.
-        </p>
-      </div>
-      
-      <div class="service-card">
-        <span class="service-icon">💬</span>
-        <h3>Multi-Channel Communication</h3>
-        <p>
-          Reach customers where they are with integrated email and SMS workflows 
-          that maintain consistent messaging across all touchpoints.
-        </p>
-      </div>
-      
-      <div class="service-card">
-        <span class="service-icon">⚡</span>
-        <h3>Marketing Automation</h3>
-        <p>
-          Streamline your marketing efforts with intelligent automation that delivers 
-          the right message at the right time to the right person.
-        </p>
-      </div>
-      
-      <div class="service-card">
-        <span class="service-icon">📊</span>
-        <h3>Analytics & Insights</h3>
-        <p>
-          Track engagement metrics and campaign performance with detailed analytics 
-          to continuously improve your communication strategy.
-        </p>
-      </div>
-      
-      <div class="service-card">
-        <span class="service-icon">🎯</span>
-        <h3>Customer Segmentation</h3>
-        <p>
-          Target your messaging with smart segmentation based on customer behavior, 
-          preferences, and engagement history.
-        </p>
-      </div>
-    </div>
-  </section>
+    <script>
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
 
-  <!-- How It Works -->
-  <section id="how-it-works">
-    <h2>How It Works</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Consultation</h3>
-        <p>
-          We learn about your business, goals, and target audience to create 
-          a customized communication strategy.
-        </p>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Setup & Integration</h3>
-        <p>
-          Our team integrates seamlessly with your existing systems and sets up 
-          automated workflows tailored to your needs.
-        </p>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Launch & Monitor</h3>
-        <p>
-          We launch your campaigns and continuously monitor performance, making 
-          adjustments to optimize results.
-        </p>
-      </div>
-      
-      <div class="step">
-        <div class="step-number">4</div>
-        <h3>Grow & Scale</h3>
-        <p>
-          As your business grows, we scale your communication systems to maintain 
-          personal connections at any volume.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Privacy Section -->
-  <section id="privacy">
-    <h2>Privacy & Data Protection</h2>
-    <div class="privacy-content">
-      <div class="privacy-card">
-        <h3><span class="icon">🔒</span> Your Privacy Matters</h3>
-        <p>
-          At ABC Growth Agency, we are committed to protecting your privacy and handling 
-          your data with the utmost care and transparency. We believe that trust is built 
-          through responsible data practices and clear communication about how we use your information.
-        </p>
-      </div>
-      
-      <div class="privacy-card">
-        <h3><span class="icon">📝</span> Information We Collect</h3>
-        <p>We collect only the information necessary to provide our services effectively:</p>
-        <ul>
-          <li>Contact information (name, email address, phone number) provided voluntarily through forms or direct communication</li>
-          <li>Communication preferences and opt-in consents</li>
-          <li>Engagement data (email opens, link clicks) to improve our services</li>
-          <li>Business information necessary to customize our communication strategies</li>
-        </ul>
-      </div>
-      
-      <div class="privacy-card">
-        <h3><span class="icon">🛡️</span> How We Use Your Information</h3>
-        <p>Your information is used solely for legitimate business purposes:</p>
-        <ul>
-          <li>Delivering the communication and engagement services you've requested</li>
-          <li>Sending appointment reminders and follow-ups with your explicit consent</li>
-          <li>Improving our services based on engagement analytics</li>
-          <li>Communicating important updates about our services</li>
-          <li>Complying with legal obligations and industry regulations</li>
-        </ul>
-      </div>
-      
-      <div class="privacy-card">
-        <h3><span class="icon">✋</span> Your Rights & Controls</h3>
-        <p>You have complete control over your data and how we communicate with you:</p>
-        <ul>
-          <li>Opt-out at any time through unsubscribe links in every communication</li>
-          <li>Request access to all data we have collected about you</li>
-          <li>Request correction or deletion of your personal information</li>
-          <li>Update your communication preferences at any time</li>
-          <li>File a complaint with us or relevant data protection authorities</li>
-        </ul>
-      </div>
-      
-      <div class="privacy-card">
-        <h3><span class="icon">🔐</span> Data Security & Protection</h3>
-        <p>
-          We implement industry-standard security measures to protect your data from 
-          unauthorized access, disclosure, alteration, or destruction. This includes:
-        </p>
-        <ul>
-          <li>Encryption of data in transit and at rest</li>
-          <li>Regular security audits and vulnerability assessments</li>
-          <li>Strict access controls and employee training on data protection</li>
-          <li>Secure cloud infrastructure with regular backups</li>
-          <li>Compliance with GDPR, CCPA, and other applicable privacy regulations</li>
-        </ul>
-      </div>
-      
-      <div class="privacy-card">
-        <h3><span class="icon">🚫</span> What We Don't Do</h3>
-        <p>Your trust is important to us. We make these commitments to you:</p>
-        <ul>
-          <li>We never sell, rent, or share your personal information with third parties for marketing purposes</li>
-          <li>We never send unsolicited communications to individuals who haven't opted in</li>
-          <li>We never use your data for purposes beyond what you've consented to</li>
-          <li>We never share your data with advertisers or data brokers</li>
-          <li>We never retain your data longer than necessary for our services</li>
-        </ul>
-      </div>
-      
-      <div class="privacy-highlight">
-        <h3>📧 Opt-In Only Communication</h3>
-        <p>
-          Every person in our communication systems has explicitly opted in through email 
-          subscriptions, contact forms, or direct business relationships. We respect your 
-          inbox and your time. If you ever wish to stop receiving communications, simply 
-          click the unsubscribe link in any email or contact us directly.
-        </p>
-      </div>
-      
-      <div class="privacy-card">
-        <h3><span class="icon">📄</span> Policy Updates</h3>
-        <p>
-          We may update this privacy policy from time to time to reflect changes in our 
-          practices or legal requirements. We will notify you of any material changes via 
-          email or through our website. This policy was last updated on January 24, 2026.
-        </p>
-      </div>
-      
-      <div class="privacy-card">
-        <h3><span class="icon">💬</span> Questions or Concerns?</h3>
-        <p>
-          If you have any questions about our privacy practices, wish to exercise your 
-          data rights, or have concerns about how your information is handled, please 
-          contact our privacy team at <a href="mailto:privacy@abcgrowth.com" style="color: #667eea; font-weight: bold;">privacy@abcgrowth.com</a> 
-          or reach us through the contact information below.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-box">
-      <h3>Let's Start Growing Together</h3>
-      <div class="contact-info">
-        <p><strong>Email:</strong> <a href="mailto:info@abcgrowth.com">info@abcgrowth.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+12125551234">+1 (212) 555-1234</a></p>
-        <p><strong>Address:</strong> 123 Main Street, Suite 500, New York, NY 10001, USA</p>
-        <p><strong>Hours:</strong> Monday - Friday, 9:00 AM - 6:00 PM EST</p>
-      </div>
-      
-      <div class="disclaimer">
-        <strong>Our Commitment to Privacy:</strong> We only communicate with individuals 
-        who have explicitly opted in through email subscriptions, contact forms, or direct 
-        conversations. Your privacy and preferences are our top priority.
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 ABC Growth Agency. All rights reserved.</p>
-    <p style="margin-top: 10px;">Empowering businesses through ethical communication.</p>
-  </footer>
-
-  <script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+        // Initial check
+        fadeInOnScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Modal elements
+        const demoBtn = document.getElementById('requestDemoBtn');
+        const modal = document.getElementById('demoModal');
+        const thankyouModal = document.getElementById('thankyouModal');
+        const closeModal = document.querySelector('.close-modal');
+        const closeThankyou = document.querySelector('.close-thankyou');
+        const closeThankyouBtn = document.getElementById('closeThankyouBtn');
+        const demoForm = document.getElementById('demoForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitText = document.getElementById('submitText');
+        const submitSpinner = document.getElementById('submitSpinner');
+        
+        // Open demo modal
+        demoBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            formMessage.className = 'form-message';
+            formMessage.style.display = 'none';
+        });
+        
+        // Close modal functions
+        const closeModals = () => {
+            modal.style.display = 'none';
+            thankyouModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+        
+        closeModal.addEventListener('click', closeModals);
+        closeThankyou.addEventListener('click', closeModals);
+        closeThankyouBtn.addEventListener('click', closeModals);
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal || e.target === thankyouModal) {
+                closeModals();
+            }
+        });
+        
+        // Handle form submission
+        demoForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            submitText.style.display = 'none';
+            submitSpinner.style.display = 'inline';
+            submitBtn.disabled = true;
+            
+            // Clear previous messages
+            formMessage.className = 'form-message';
+            formMessage.style.display = 'none';
+            
+            try {
+                // FormSubmit.co submission
+                const formData = new FormData(demoForm);
+                
+                // Add timestamp
+                formData.append('_date', new Date().toISOString());
+                
+                const response = await fetch(demoForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    formMessage.textContent = 'Request submitted successfully!';
+                    formMessage.className = 'form-message success';
+                    formMessage.style.display = 'block';
+                    
+                    // Reset form
+                    demoForm.reset();
+                    
+                    // Close demo modal and show thank you modal after delay
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                        thankyouModal.style.display = 'flex';
+                    }, 1500);
+                    
+                } else {
+                    throw new Error('Form submission failed');
+                }
+                
+            } catch (error) {
+                // Show error message
+                formMessage.textContent = 'There was an error submitting your request. Please try again or email us directly.';
+                formMessage.className = 'form-message error';
+                formMessage.style.display = 'block';
+                
+                // Scroll to message
+                formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+            } finally {
+                // Reset button state
+                submitText.style.display = 'inline';
+                submitSpinner.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#demo') {
+                    demoBtn.click();
+                    return;
+                }
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Handle FormSubmit redirect (for when JavaScript is disabled)
+        if (window.location.hash === '#thankyou') {
+            thankyouModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
-      });
-    });
-
-    // Add scroll animation to service cards
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.service-card, .step, .stat-card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(30px)';
-      card.style.transition = 'all 0.6s ease';
-      observer.observe(card);
-    });
-
-    // Animate privacy cards
-    document.querySelectorAll('.privacy-card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(30px)';
-      card.style.transition = 'all 0.6s ease';
-      observer.observe(card);
-    });
-
-    console.log("ABC Growth Agency website loaded and enhanced.");
-  </script>
+        
+        // Form validation
+        const inputs = demoForm.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', () => {
+                if (input.hasAttribute('required') && !input.value.trim()) {
+                    input.style.borderColor = 'var(--error)';
+                } else {
+                    input.style.borderColor = 'var(--gray-light)';
+                }
+            });
+            
+            input.addEventListener('input', () => {
+                input.style.borderColor = 'var(--gray-light)';
+            });
+        });
+    </script>
 </body>
 </html>
